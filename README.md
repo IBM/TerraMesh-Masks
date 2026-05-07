@@ -77,7 +77,7 @@ Different from TerraMesh, the samples are now stored as tif files which makes re
 
 ## Download training data
 
-Please note that the full dataset requires 17TB or storage and is provided by at https://huggingface.co/ibm-esa-geospatial/TerraMesh.
+Please note that the full dataset requires 18TB or storage and input images are provided by https://huggingface.co/ibm-esa-geospatial/TerraMesh.
 
 ```shell
 # Download image data
