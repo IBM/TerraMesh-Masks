@@ -1,0 +1,10 @@
+zarr==2.18.0
+numcodecs==0.15.1
+torch
+huggingface_hub
+webdataset
+numpy
+albumentations
+fsspec
+braceexpand
+rasterio

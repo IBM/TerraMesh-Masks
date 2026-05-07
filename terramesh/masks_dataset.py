@@ -1,23 +1,35 @@
-from __future__ import annotations
+# Copyright 2025 IBM Corp.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
-import functools
 import io
-import logging
 import os
 import re
+import functools
 import warnings
-from collections.abc import Callable, Iterable
-from typing import Any
-
 import braceexpand
 import fsspec
 import numpy as np
 import torch
 import webdataset as wds
 import zarr
+from typing import Any
+from collections.abc import Callable, Iterable
 from torch.utils.data._utils.collate import default_collate
 
-logger = logging.getLogger(__name__)
+__all__ = [
+    "build_terramesh_masks_dataset",
+]
 
 
 def identity(sample: Any) -> Any:
@@ -287,18 +299,6 @@ def multi_tarfile_samples(
             continue
 
 
-def collate_fn(batch: list[dict[str, Any]]) -> Any:
-    """Default collate wrapper with debug prints on failure."""
-    try:
-        return default_collate(batch)
-    except Exception as exc:
-        for sample in batch:
-            print(sample.get("__key__", "<missing __key__>"))
-            print(sample.get("__url__", "<missing __url__>"))
-            print(sample.keys())
-        raise exc
-
-
 def _subset_pipeline(
     urls: str,
     *,
@@ -343,13 +343,13 @@ def _subset_pipeline(
         wds.select(functools.partial(is_mask_uid_in_whitelist, whitelist=whitelist_mask_uid)),
         wds.shuffle(shardshuffle, seed=seed) if shardshuffle else wds.map(identity),
         wds.map(transform) if transform is not None else wds.map(identity),
-        wds.batched(batch_size, collation_fn=collate_fn, partial=partial) if batch_size else wds.map(identity),
+        wds.batched(batch_size, collation_fn=default_collate, partial=partial) if batch_size else wds.map(identity),
     ]
 
     return wds.DataPipeline(*pipeline_steps)
 
 
-def build_terramesh_mask_dataset(
+def build_terramesh_masks_dataset(
     urls: str,
     *,
     batch_size: int | None = None,
@@ -402,11 +402,3 @@ def build_terramesh_mask_dataset(
         filter_set=filter_set,
         whitelist_mask_uid=whitelist_mask_uid,
     )
-
-
-__all__ = [
-    "_subset_pipeline",
-    "build_terramesh_mask_dataset",
-    "split_bmask",
-    "multi_tarfile_samples",
-]
