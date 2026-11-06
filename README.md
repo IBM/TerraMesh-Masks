@@ -5,7 +5,7 @@
 # TerraMesh-Masks
  
 TerraMesh-Masks is a dataset for open-vocabulary segmentation of satellite imagery. This repository provides data loading code for the datasets.
-You find the [training dataset](https://huggingface.co/ibm-esa-geospatial/TerraMesh-Masks) and [evaluation benchmark](https://huggingface.co/ibm-esa-geospatial/TerraMesh-Masks-Eval) on Hugging Face.
+You find the [training dataset](https://huggingface.co/ibm-esa-geospatial/TerraMesh-Masks) and [evaluation benchmark](https://huggingface.co/ibm-esa-geospatial/TerraMesh-Masks-Eval) on Hugging Face. More details in our [paper](https://arxiv.org/abs/2611.08081). 
 
 ## Examples
 
@@ -98,16 +98,14 @@ hf download ibm-esa-geospatial/TerraMesh-Masks --repo-type dataset --include "va
 
 ## Citation
 
-Preprint for TerraMesh-Masks is coming soon!
-
-TerraMesh:
+If you use TerraMesh-Masks-Eval, please cite our [paper](https://arxiv.org/abs/2611.08081):
 
 ```bibtex
-@article{blumenstiel2025terramesh,
-  title={Terramesh: A planetary mosaic of multimodal earth observation data},
-  author={Blumenstiel, Benedikt and Fraccaro, Paolo and Marsocci, Valerio and Jakubik, Johannes and Maurogiovanni, Stefano and Czerkawski, Mikolaj and Sedona, Rocco and Cavallaro, Gabriele and Brunschwiler, Thomas and Bernabe-Moreno, Juan and others},
-  journal={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
-  year={2025},
+@article{blumenstiel2026terrameshmasks,
+  title={TerraMesh-Masks: Open-Vocabulary Segmentation for Earth Observation},
+  author={Blumenstiel, Benedikt and Devimeux, Hugues and Jakubik, Johannes and Schindler, Konrad},
+  journal={arXiv preprint arXiv:2611.08081},
+  year={2026},
 }
 ```
 
