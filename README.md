@@ -98,7 +98,7 @@ hf download ibm-esa-geospatial/TerraMesh-Masks --repo-type dataset --include "va
 
 ## Citation
 
-If you use TerraMesh-Masks-Eval, please cite our [paper](https://arxiv.org/abs/2611.08081):
+If you use TerraMesh-Masks, please cite our [paper](https://arxiv.org/abs/2611.08081):
 
 ```bibtex
 @article{blumenstiel2026terrameshmasks,
