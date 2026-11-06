@@ -1,4 +1,4 @@
-[![arXiv](https://img.shields.io/badge/arXiv-coming_soon-b31b1b?logo=arxiv)](https://arxiv.org/)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.08081-b31b1b?logo=arxiv)](https://arxiv.org/abs/2611.08081)
 [![HuggingFace](https://img.shields.io/badge/Hugging_Face-TerraMesh_Masks-FFD21E?logo=huggingface)](https://huggingface.co/ibm-esa-geospatial/TerraMesh-Masks)
 [![HuggingFace](https://img.shields.io/badge/Hugging_Face-TerraMesh_Masks_Eval-FFD21E?logo=huggingface)](https://huggingface.co/ibm-esa-geospatial/TerraMesh-Masks-Eval)
 
